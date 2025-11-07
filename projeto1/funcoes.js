@@ -36,6 +36,18 @@ function removerSeIncluir(array, padraoTextual) {
   return array.filter(el => !el.includes(padraoTextual));
 }
 
+function removerSimbolos(simbolos){
+    return function(array){
+        return array.map(el => {
+            let textoSemSimbolos = el
+            simbolos.forEach(simbolo => {
+                textoSemSimbolos = textoSemSimbolos.split(simbolo).join('')
+            })
+            return textoSemSimbolos
+        })
+    }
+}
+
 function removerSeApenasNumeros(array) {
   return array.filter(el => {
     const num = parseInt(el.trim());
@@ -50,5 +62,6 @@ module.exports = {
   elementosTerminadosCom,
   removerSeVazio,
   removerSeIncluir,
-  removerSeApenasNumeros
+  removerSeApenasNumeros,
+  removerSimbolos
 };
